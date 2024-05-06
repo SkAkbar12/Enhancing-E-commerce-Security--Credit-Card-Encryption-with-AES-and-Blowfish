@@ -6,18 +6,18 @@ Install Python: Ensure you have Python installed on your system. Django requires
 
 Install Virtual Environment (Optional but Recommended): It's a good practice to create a virtual environment for your Django project to isolate its dependencies. You can create a virtual environment using virtualenv or venv:
 
-bash
+
 
 # Using virtualenv
-pip install virtualenv
-virtualenv myenv
-source myenv/bin/activate  # for Linux/macOS
-myenv\Scripts\activate      # for Windows
+pip install virtualenv,
+virtualenv myenv,
+source myenv/bin/activate,  # for Linux/macOS
+myenv\Scripts\activate,      # for Windows
 
 # Using venv (Python 3.3+)
-python -m venv myenv
-source myenv/bin/activate  # for Linux/macOS
-myenv\Scripts\activate      # for Windows
+python -m venv myenv,
+source myenv/bin/activate , # for Linux/macOS
+myenv\Scripts\activate ,     # for Windows
 
 Install Dependencies: Navigate to the project directory and install the required dependencies listed in the requirements.txt file using pip:
 
@@ -29,7 +29,7 @@ Database Setup: Configure your database settings in the settings.py file located
 
 Apply Migrations: Run the following command to apply migrations and create database tables:
 
-bash
+
 
 python manage.py migrate
 
