@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .product-details {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 70%;
+            margin: auto;
+            box-sizing: border-box;
+        }
+
+        .product-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .product-description {
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .buy-now-btn,
+        .add-to-cart-btn {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #ff523b;
+            color: #fff;
+            padding: 8px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.5s;
+            text-align: center;
+        }
+
+        .buy-now-btn:hover,
+        .add-to-cart-btn:hover {
+            background: #563434;
+        }
+
+        .ratings-reviews {
+            margin-top: 20px;
+        }
+
+        .ratings,
+        .reviews {
+            margin-bottom: 10px;
+        }
+
+        .review {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .review-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #0066c0; /* Amazon's link color */
+        }
+
+        .review-details {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .review-text {
+            margin-bottom: 10px;
+        }
+
+        .action-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .action-button {
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-right: 10px;
+        }
+
+        .helpful-button {
+            background-color: #f0f0f0;
+            color: #0066c0;
+        }
+
+        .helpful-button:hover {
+            background-color: #ddd;
+        }
+
+        .report-button {
+            background-color: #f0f0f0;
+            color: #c45500;
+        }
+
+        .report-button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+ {%include 'head.html'%}
+      
+    <div class="product-details">
+        <img src="/media/{{imgfile}}" alt="Product Image" class="product-image" onclick="zoomImage()">
+        <h2>{{imgname}}</h2>
+        <p class="product-description">
+            Explore the style with GMR – a renowned name in fashion. Our exclusive collection of clothing reflects a
+            perfect blend of comfort, quality, and trendiness. Elevate your wardrobe with our meticulously crafted pieces
+            designed for modern individuals.
+
+            The GMR brand takes pride in offering a diverse range of apparel, each piece uniquely curated to suit your
+            lifestyle. Whether you're looking for casual wear or something more sophisticated, GMR has you covered.
+            Experience the confidence and charm that comes with wearing GMR.
+
+            Join the fashion revolution with GMR – where every stitch tells a story. Embrace the GMR lifestyle, and make
+            a statement wherever you go.
+
+            Don't just wear clothes; wear GMR.
+            <!-- Your existing product description -->
+        </p>
+        <a href="{%url 'gateway' email_id imgname imgfile%}" class="buy-now-btn">Buy Now &#8594;</a>
+        <a href="{%url 'cartitems' email_id imgname imgfile%}" class="add-to-cart-btn">Add to Cart &#128722;</a>
+
+        <div class="ratings-reviews">
+            <div class="ratings">
+                Average Rating: 4.5/5 <!-- Replace with actual average rating -->
+            </div>
+            <div class="reviews">
+                <h3>Top reviews from India</h3>
+                <div class="review">
+                    <div class="review-title">Bhushan Jadhav</div>
+                    <div class="review-details">5.0 out of 5 stars &nbsp; Good choice and value for money</div>
+                    <div class="review-details">Reviewed in India on 5 March 2024</div>
+                    <div class="review-text">
+                        It's a good choice and value for money, it is not that strong but satisfies the purpose
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-button helpful-button">Helpful</button>
+                        <button class="action-button report-button">Report</button>
+                    </div>
+                </div>
+                <div class="review">
+                    <div class="review-title">Mohamed Nasar</div>
+                    <div class="review-details">4.0 out of 5 stars &nbsp; Quality Should Upgrade</div>
+                    <div class="review-details">Reviewed in India on 26 February 2024</div>
+                    <div class="review-text">
+                        Good one, can't say excellent.
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-button helpful-button">Helpful</button>
+                        <button class="action-button report-button">Report</button>
+                    </div>
+                </div>
+                <div class="review">
+                    <div class="review-title">Hussain Tinwala</div>
+                    <div class="review-details">5.0 out of 5 stars &nbsp; the board is very useful for iron the cloth</div>
+                    <div class="review-details">Reviewed in India on 4 February 2024</div>
+                    <div class="review-text">
+                        the board wooden quality is also nice.. the ironing board has a stand for keeping the iron... the. stand is very good in quality and very helpful for ironing the cloth....the board is adjustable and we can adjust the size of board......
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-button helpful-button">Helpful</button>
+                        <button class="action-button report-button">Report</button>
+                    </div>
+                </div>
+                <div class="review">
+                    <div class="review-title">Raah</div>
+                    <div class="review-details">3.0 out of 5 stars &nbsp; Does the job, but wobbly</div>
+                    <div class="review-details">Reviewed in India on 17 February 2024</div>
+                    <div class="review-text">
+                        It's sturdy but very wobbly. Wouldn't recommend unless you're going to use it only occasionally.
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-button helpful-button">Helpful</button>
+                        <button class="action-button report-button">Report</button>
+                    </div>
+                </div>
+                <div class="review">
+                    <div class="review-title">Placeholder</div>
+                    <div class="review-details">4.0 out of 5 stars &nbsp; Good but wobbly</div>
+                    <div class="review-details">Reviewed in India on 23 December 2023</div>
+                    <div class="review-text">
+                        The table is not stable on the floor and all feet are not level. It wobbles unless supported on one side with a wall
+                    </div>
+                    <div class="review-text">3 people found this helpful</div>
+                    <div class="action-buttons">
+                        <button class="action-button helpful-button">Helpful</button>
+                        <button class="action-button report-button">Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for the zoom effect -->
+    <script>
+        function zoomImage() {
+            document.querySelector('.zoom-container').style.display = 'flex';
+        }
+
+        function closeZoom() {
+            document.querySelector('.zoom-container').style.display = 'none';
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Method - Amazon</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Inline CSS */
+    .payment-method-container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .payment-method-header {
+      background-color: #f8f9fa;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    .payment-method-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    .btn-checkout {
+      background-color: #FF9900;
+      border-color: #FF9900;
+      color: #fff;
+    }
+    .btn-checkout:hover {
+      background-color: #E68A00;
+      border-color: #E68A00;
+    }
+    .use-payment-method {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="https://i.ibb.co/kDVwgwp/logo.png" alt="GMRStore" width="125px" /></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="account.html">Account</a></li>
+                    <div class="user-section">
+                        {% if  email %}
+                            <li>
+                                <div class="user-badge">
+                                    <!-- Replace the image source with the user's profile picture -->
+                                    <img src="https://i.ibb.co/default-user-image.jpg" alt="User" />
+
+                                    <!-- Dropdown Content -->
+                                    <div class="user-dropdown">
+                                        
+                                        <p>{{ email }}</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><a href="{% url 'logout' %}">Logout</a></li>
+                        {% else %}
+                            <br><li><a href="{% url 'login' %}">Login</a></li>
+                        {% endif %}
+                    </div>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+  <div class="container payment-method-container">
+    <form id="paymentForm" method="post" action="{%url 'Scarddetails' %}">
+      {% csrf_token %}
+      <div class="payment-method-header">
+        <h4>Your available balance</h4>
+      </div>
+      <div class="payment-method-option">
+        <label>
+          <input type="radio" name="paymentMethod" value="Credit or debit card">
+          Credit or debit card
+        </label>
+      </div>
+      <div class="payment-method-option">
+        <label>
+          <input type="radio" name="paymentMethod" value="Net Banking">
+          Net Banking
+        </label>
+      </div>
+      <div class="payment-method-option">
+        <label>
+          <input type="radio" name="paymentMethod" value="Other UPI Apps">
+          Other UPI Apps
+        </label>      </div>
+        <div class="payment-method-option">
+          <label>
+            <input type="radio" name="paymentMethod" value="EMI">
+            EMI
+          </label>
+        </div>
+        <div class="payment-method-option">
+          <label>
+            <input type="radio" name="paymentMethod" value="Cash on Delivery/Pay on Delivery">
+            Cash on Delivery/Pay on Delivery
+          </label>
+        </div>
+        <div class="payment-method-option">
+          <p>Cash, UPI, and Cards accepted. <a href="#">Know more.</a></p>
+        </div>
+        <div class="use-payment-method">
+          <button type="button" class="btn btn-checkout" onclick="submitForm()">Use this payment method</button>
+        </div>
+      </form>
+  
+      <script>
+        function submitForm() {
+          const form = document.getElementById('paymentForm');
+          form.submit();
+        }
+      </script>
+  
+    </div>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+  </html>
+  

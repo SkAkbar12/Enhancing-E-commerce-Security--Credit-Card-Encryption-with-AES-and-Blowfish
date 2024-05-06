@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RBL Bank Credit Card Application Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h2 class="mb-4">RBL Bank Credit Card Application Form</h2>
+
+        <form method='POST' action="{% url 'bankapplication' %}">
+            {% csrf_token %}
+            <!-- Personal Details -->
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label">1. Name*</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" name='name' placeholder="Full Name" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="gender" class="col-sm-2 col-form-label">2. Gender*</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="gender" name='gender'required>
+                        <option value="" disabled selected>Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="maritalStatus" class="col-sm-2 col-form-label">3. Marital Status*</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="maritalStatus" name='marriage' required>
+                        <option value="" disabled selected>Select Marital Status</option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="others">Others</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Father and Mother Details -->
+            <div class="form-group row">
+                <label for="fatherName" class="col-sm-2 col-form-label">4. Father’s Name*</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="fatherName" name='Fname' placeholder="Father’s Name" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="motherName" class="col-sm-2 col-form-label">5. Mother’s Name*</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="motherName" name='Mname' placeholder="Mother’s Name" required>
+                </div>
+            </div>
+
+            <!-- Education and PAN Details -->
+            <div class="form-group row">
+                <label for="education" class="col-sm-2 col-form-label">6. Education Qualification*</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="education" placeholder="Education Qualification" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="panNumber" class="col-sm-2 col-form-label">7. PAN number*</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="panNumber" name='pan' placeholder="PAN Number" required>
+                </div>
+            </div>
+
+            <!-- Desired Name on the Card and Residential Status -->
+            <div class="form-group row">
+                <label for="desiredName" class="col-sm-2 col-form-label">8. Desired Name on the Card*</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="desiredName" placeholder="Desired Name on the Card" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="residentialStatus" class="col-sm-2 col-form-label">9. Residential Status*</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="residentialStatus" required>
+                        <option value="" disabled selected>Select Residential Status</option>
+                        <option value="residentIndian">Resident Indian</option>
+                        <option value="nonResidentIndian">Non-Resident Indian</option>
+                        <option value="foreignNational">Foreign National</option>
+                        <option value="personOfIndianOrigin">Person of Indian Origin</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Financial Details -->
+            <div class="form-group row">
+                <label for="netIncome" class="col-sm-2 col-form-label">10. Net Monthly Income*</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="netIncome" name='Wnet' placeholder="Net Monthly Income" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="mobileNumber" class="col-sm-2 col-form-label">11. Mobile Number*</label>
+                <div class="col-sm-10">
+                    <input type="tel" class="form-control" id="mobileNumber" name='number' placeholder="Mobile Number" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="dob" class="col-sm-2 col-form-label">12. Date of Birth (as per AADHAAR)*</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" name='dob' id="dob" required>
+                </div>
+            </div>
+
+            <!-- Introduction -->
+            <div class="form-group row">
+                <label for="introduction" class="col-sm-2 col-form-label">13. Introduction*</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" id="introduction" rows="5" placeholder="Introduce yourself (Please fill the form in BLOCK LETTERS)" required></textarea>
+                </div>
+            </div>
+
+            <!-- Card Selection -->
+            <div class="form-group row">
+                <label for="creditCard" class="col-sm-2 col-form-label">14. Please select your desired Credit Card</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="creditCard" name='Dcc' >
+                        <!-- Add options for different credit cards -->
+                        <option value="card1">Card 1</option>
+                        <option value="card2">Card 2</option>
+                        <option value="card3">Card 3</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group row">
+                <label for="address" class="col-sm-2 col-form-label">15. Address*</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" id="address" rows="3" placeholder="Enter your address" required></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="landmark" class="col-sm-2 col-form-label">16. Landmark</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="landmark" placeholder="Landmark">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="city" class="col-sm-2 col-form-label">17. City*</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="city" name='city' placeholder="City" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="state" class="col-sm-2 col-form-label">18. State*</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="state" name='state' placeholder="State" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="pincode" class="col-sm-2 col-form-label">19. Pincode*</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="pincode" name='pin' placeholder="Pincode" required>
+                </div>
+            </div>
+
+            <!-- Education Details -->
+            <div class="form-group row">
+                <label for="education" class="col-sm-2 col-form-label">20. Education Qualification*</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="education" required>
+                        <option value="" disabled selected>Select Education Qualification</option>
+                        <option value="postGraduate">Post Graduate</option>
+                        <option value="graduate">Graduate</option>
+                        <option value="underGraduate">Under Graduate</option>
+                        <option value="others">Others</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Employment Details -->
+            <div class="form-group row">
+                <label for="employerType" class="col-sm-2 col-form-label">21. Employer type*</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="employerType" required>
+                        <option value="" disabled selected>Select Employer Type</option>
+                        <option value="salaried">Salaried</option>
+                        <option value="selfEmployed">Self-Employed/Business/Professional</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="designation" class="col-sm-2 col-form-label">22. Designation*</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="designation" name='desg' placeholder="Designation" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="employerName" class="col-sm-2 col-form-label">23. Employer/Firm Name*</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="employerName" placeholder="Employer/Firm Name" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="workEmail" class="col-sm-2 col-form-label">24. Work Email ID*</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="workEmail" name='Email'  placeholder="Work Email ID" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="workEmail" class="col-sm-2 col-form-label">24. Password*</label>
+                <div class="col-sm-10">
+                    <input type="Password" class="form-control" id="workEmail" name='passw'  placeholder="enter password" required>
+                </div>
+            </div>
+
+            <!-- Preferences -->
+            <div class="form-group row">
+            <label class="col-sm-2 col-form-label">25. Preferences</label>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="taxLiability" name="taxLiability">
+                    <label class="form-check-label" for="taxLiability">Do you have tax liability outside India?*</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">26. Fraud Coverage Preference</label>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="fraudCoverageYes" name="fraudCoverage" value="yes">
+                    <label class="form-check-label" for="fraudCoverageYes">Yes</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="fraudCoverageNo" name="fraudCoverage" value="no">
+                    <label class="form-check-label" for="fraudCoverageNo">No</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Existing Member Checkbox -->
+        <div class="form-group row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="existingMember" name="existingMember">
+                    <label class="form-check-label" for="existingMember">Yes, I am an existing RBL Bank Credit Card member</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group row mt-4">
+            <div class="col-sm-10 offset-sm-2">
+                <button type="submit" class="btn btn-primary">Save Details</button>
+            </div>
+        </div>
+    </form>
+    <form method="post" action="{% url 'carddetails' %}">
+        <!-- Your form fields go here -->
+        {% csrf_token %}
+        <!-- Submit Button for Generating Card -->
+        <div class="form-group row mt-4">
+            <div class="col-sm-10 offset-sm-2">
+                <button type="submit" class="btn btn-primary">Generate Card</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+

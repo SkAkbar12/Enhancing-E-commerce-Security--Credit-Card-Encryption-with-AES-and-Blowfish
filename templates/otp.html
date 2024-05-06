@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Additional custom styles can be added here */
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .otp-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .otp-input {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 18px;
+            margin: 0 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .otp-input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .btn-submit {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container otp-container">
+    <h4 class="text-center">Enter OTP</h4>
+    <p class="text-center">We've sent a 6-digit OTP to your mobile number</p>
+    <form method='POST' action="{%url 'verifypin'%}">
+        {%csrf_token%}
+    <div class="d-flex justify-content-center">
+        <input type="text" name='p1' class="form-control otp-input" maxlength="1" />
+        <input type="text" name='p2' class="form-control otp-input" maxlength="1" />
+        <input type="text" name='p3' class="form-control otp-input" maxlength="1" />
+        <input type="text" name='p4' class="form-control otp-input" maxlength="1" />
+        <input type="text" name='p5' class="form-control otp-input" maxlength="1" />
+        <input type="text" name='p6' class="form-control otp-input" maxlength="1" />
+    </div>
+
+    <div class="text-center mt-4">
+        <button class="btn btn-submit">Verify OTP</button>
+    </div>
+</div>
+</form>
+
+<div id="timer" class="text-center mt-4"></div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // Set the timer duration in milliseconds (1.5 minutes = 90 seconds)
+    var timerDuration = 90 * 1000;
+    var timerElement = document.getElementById('timer');
+
+    // Function to update the timer display
+    function updateTimerDisplay(remainingTime) {
+        var minutes = Math.floor(remainingTime / 60000);
+        var seconds = ((remainingTime % 60000) / 1000).toFixed(0);
+        timerElement.innerHTML = 'Time Left: ' + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+    }
+
+    // Function to handle timer expiration
+    function handleTimerExpiration() {
+        timerElement.innerHTML = 'Time Limit Exceeded';
+    }
+
+    // Start the countdown timer
+    var startTime = Date.now();
+    var intervalId = setInterval(function() {
+        var elapsedTime = Date.now() - startTime;
+        var remainingTime = timerDuration - elapsedTime;
+
+        if (remainingTime <= 0) {
+            clearInterval(intervalId);
+            handleTimerExpiration();
+        } else {
+            updateTimerDisplay(remainingTime);
+        }
+    }, 1000); // Update timer display every second
+</script>
+
+</body>
+</html>

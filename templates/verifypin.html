@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret PIN Verification</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .pin-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .pin-input {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 18px;
+            margin: 0 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .pin-input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .btn-submit {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container pin-container">
+    <h4 class="text-center">Enter Secret PIN</h4>
+    <p class="text-center">Please enter your 6-digit secret PIN</p>
+    <form method='POST' action="{%url 'authotp'%}">
+        {%csrf_token%}
+    <div class="d-flex justify-content-center">
+        <input type="password" name='p1' class="form-control pin-input" maxlength="1" />
+        <input type="password" name='p2' class="form-control pin-input" maxlength="1" />
+        <input type="password" name='p3' class="form-control pin-input" maxlength="1" />
+        
+        <input type="password" name='p4' class="form-control pin-input" maxlength="1" />
+        <input type="password" name='p5' class="form-control pin-input" maxlength="1" />
+        <input type="password" name='p6' class="form-control pin-input" maxlength="1" />
+    </div>
+
+    <div class="text-center mt-4">
+        <button class="btn btn-submit">Verify PIN</button>
+    </div>
+</div>
+</form>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

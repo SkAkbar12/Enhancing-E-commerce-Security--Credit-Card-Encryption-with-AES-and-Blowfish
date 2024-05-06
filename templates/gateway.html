@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Details Form</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Custom CSS */
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .card-form-container {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    .card-number {
+      display: flex;
+    }
+
+    .card-number input {
+      flex: 1;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container card-form-container">
+    <h2 class="text-center mb-4">Enter Card Details</h2>
+    
+    <form method='POST' action="{% url 'fullcarddetails' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="cardNumber">Card Number</label>
+        <div class="card-number">
+          <input type="text" name='cardnumbers' class="form-control" id="cardNumber" placeholder="**** **** **** ****">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="expDate">Expiration Date</label>
+        <input type="text" name='expdates' class="form-control" id="expDate" placeholder="MM / YY">
+      </div>
+
+      <div class="form-group">
+        <label for="cvv">CVV</label>
+        <input type="text" name='cvvs' class="form-control" id="cvv" placeholder="***">
+      </div>
+
+      <div>
+        <button type="submit" class="btn btn-success btn-block mt-3">Submit</button>
+      </div>
+    </form>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
