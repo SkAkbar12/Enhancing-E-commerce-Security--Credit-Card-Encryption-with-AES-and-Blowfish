@@ -1,0 +1,2 @@
+# Enhancing E-commerce Security: Credit Card Encryption with AES and Blowfish
+ An e-commerce website ensures secure credit card transactions by employing robust encryption algorithms like AES (Advanced Encryption Standard) and Blowfish. These algorithms encode sensitive credit card information, ensuring it remains confidential during transmission and storage, bolstering customer trust and data security.
